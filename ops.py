@@ -2,6 +2,12 @@
 import argparse
 import os
 import sys
+
+if __package__ in (None, ""):
+    repo_parent = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
+    if repo_parent not in sys.path:
+        sys.path.insert(0, repo_parent)
+
 from pocketops.db import DB
 from pocketops.timeparse import parse_due
 from pocketops.engine import run_check, format_task_list
